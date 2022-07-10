@@ -1,0 +1,940 @@
+/* COMMON */
+body {
+    background-color: #f6f5ef;
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Nanum Gothic', sans-serif;
+    height: 4000px;
+}
+a{
+    text-decoration: none;
+}
+/* 스타벅스 페이지에서 컨텐츠 파트는 inner 안에 포함 되므로
+커먼 클래스로 선언하여 반복 사용 */
+.inner {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+} 
+/* strong태그로 두껍게 해주는 방법도 있음 */
+.strong{
+    font-weight: 700;
+}
+.btn{
+    display: inline-block;
+    padding: 8px 20px;
+    box-sizing: border-box;
+    border: 2px solid currentColor; /*부모의 색을 상속받는 속성값*/
+    border-radius: 5px;
+}
+.btn:hover{
+    text-decoration: underline;
+}
+.btn--reverse{
+    background-color: #00704a;
+    border: 2px solid #00704a;
+    color: #fff;
+}
+.btn--reverse:hover{
+    text-decoration: underline;
+}
+.btn--white{
+    border:2px solid #fff;
+    color: #fff;
+    transition: .4s;
+}
+.btn--white:hover{
+    background-color: #fff;
+    color: #333;
+    text-decoration: underline;
+}
+.btn--light_green{
+    border-color: #00704a;
+    color: #00704a;
+    transition: .4s;
+}
+.btn--light_green:hover{
+    color: #fff;
+    background-color: #00704a;
+    text-decoration: underline;
+}
+.btn--dark_green{
+    border:2px solid #1c3831;
+    color: #1c3831;
+    transition: .4s;
+}
+.btn--dark_green:hover{
+    background-color: #1c3831;
+    color: #fff;
+    text-decoration: underline;
+}
+.btn--light_gold{
+    border:2px solid #C08A3C;
+    color: #C08A3C;
+    transition: .4s;
+}
+.btn--light_gold:hover{
+    background-color: #C08A3C;
+    color: #fff;
+    text-decoration: underline;
+}
+.btn--black{
+    border:2px solid #333;
+    color: #333;
+    transition: .4s;
+}
+.btn--black:hover{
+    background-color: #333;
+    color: #fff;
+    text-decoration: underline;
+}
+/* HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    background-color: #f6f5ef;
+    border-bottom: 1px solid #c8c8c8;
+    top: 0;
+    z-index: 1;
+}
+
+/* inner 가 반복 사용 되므로, 후손 선택자일 경우 겹칠 수 있으므로
+직계 자손 선택자로 변경하여 문제를 미리 방지 */
+header>.inner {
+    background-color: #f6f5ef;
+    height: 120px;
+}
+
+header .inner .logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;    
+    margin: auto 0;
+    height: 75px;    
+}
+
+header .inner .logo img {
+    display: block;    
+}
+
+header .inner .sub_menu {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+header .inner .sub_menu .menu {
+    display: flex;    
+}
+
+header .inner .sub_menu .menu li {
+    line-height: 32px;
+}
+
+/* 가상 클래스(not, last-child) / 가상 요소 선택자 동시 사용 */
+header .inner .sub_menu .menu li:not(:last-child)::after {
+    content: "|";
+    font-size: 12px;
+    color: #c8c8c8;
+}
+
+header .inner .sub_menu .menu li a {
+    font-size: 12px;
+    color: #656565;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+header .inner .sub_menu .menu li a:hover {
+    text-decoration: underline;
+}
+
+header .inner .search {
+    position: relative;
+}
+
+header .inner .search input {
+    width: 40px;
+    height: 34px;
+    transition: width 0.4s;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+header .inner .search input:focus {
+    width: 180px;  
+    outline-color: green;  
+}
+
+header .inner .search span {
+    position: absolute;
+    font-size: 24px;
+    height: 24px;
+    top: 0;
+    bottom: 0;
+    right: 3px;
+    margin: auto;
+}
+
+/* MAIN MENU */
+header .inner .main_menu {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+header .inner .main_menu .item {
+}
+
+header .inner .main_menu .item .item__name {
+    padding: 10px 20px 34px 20px;
+    font-size: 13px;
+}
+
+header .inner .main_menu .item:hover .item__name {
+    background-color: #2c2a29;
+    color: #669900;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+header .main_menu .item .item__contents {
+    /* fixed 를 주어, 뷰포트 전체의 넓이를 사용할 수 있도록 설정 */
+    position: fixed;
+    /* 넓이 100% 선언을 안하면 기존 부모의 크기를 받아오기 때문에 100% 선언하여 뷰포트 전체 넓이를 확보 */
+    width: 100%;
+    /* 기존 부모의 위치를 참고하므로 left: 0 으로 뷰포트 제일 왼쪽으로 위치 */
+    left: 0;
+    display: none;
+}
+
+/* 컨텐츠에 마우스가 올라간 상태에서도 hover 가 유지가 되어야 하므로
+item 전체에 hover 를 걸고 효과를 줄 요소를 뒤에 선택자로 선택 */
+header .main_menu .item:hover .item__contents {
+    display: block;
+}
+
+header .main_menu .item .item__contents .item__contents__menu {
+    background-color: #2c2a29;
+    padding: 20px 0px;
+    width: 100%;    
+}
+
+header .main_menu .item .item__contents .item__contents__menu .inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 요소 내부에 ul, li 태그 중첩이 반복 되므로, 후손 선택자 사용 시 직계가 아닌 요소 까지 선택이 되므로
+직계 자손 선택자를 사용하여 안전하게 처리 */
+header .main_menu .item .item__contents .item__contents__menu .inner>li {
+    width: 200px;
+    padding: 0 20px 0 0;
+}
+
+header .main_menu .item .item__contents .item__contents__menu .inner>li>a {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header .main_menu .item .item__contents .item__contents__menu .inner>li>a:hover {
+    text-decoration: underline;
+}
+
+header .main_menu .item .item__contents .item__contents__menu .inner>li>ul {}
+
+header .main_menu .item .item__contents .item__contents__menu .inner>li>ul>li {
+    font-size: 12px;
+    color: #999;
+    margin: 5px 0;
+}
+
+header .main_menu .item .item__contents .item__contents__menu .inner>li>ul>li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+header .main_menu .item .item__contents .item__contents__additional {
+    background-image: url("../images/main_menu_pattern.jpg");    
+    padding: 20px 0;
+    width: 100%;   
+}
+
+header .main_menu .item .item__contents .item__contents__additional .inner {}
+
+header .main_menu .item .item__contents .item__contents__additional .inner>a {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+header .main_menu .item .item__contents .item__contents__additional .inner>a:hover {
+    text-decoration: underline;
+}
+
+header .main_menu .item .item__contents .item__contents__additional .inner>p {
+    font-size: 12px;
+    color: #669900;
+}
+
+/* BADGES */
+header .badges {
+    position: absolute;
+    top: 150px;
+    right: 20px;
+}
+
+header .badges .badge {}
+
+header .badges .badge>a{}
+
+header .badges .badge>a>img{}
+
+
+/* VISUAL */
+.visual {
+    background-image: url("../images/visual_bg.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;    
+    margin-top: 120px;
+}
+
+.visual .inner {
+    /* 이미지를 모두 absolute 로 처리할 것이기 때문에 이미지들의 기준점을 되기 위해서
+    미리 inner 에 position: relative; 선언 */
+    position: relative;
+    height: 646px;
+}
+
+.visual .inner .slogan {
+    position: absolute;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.visual .inner .slogan>img {
+    position: absolute;
+    top: 88px;
+}
+
+.visual .inner .slogan>.btn {
+    display: block;
+    width: 130px;
+    height: 38px;
+    margin-top: 30px;
+    opacity: 0;
+    transition: 0.4s;
+    font-size: 15px;
+}
+
+.visual .inner .slogan>.btn:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: #1c3831;
+    font-weight: bold;
+}
+
+.visual .inner .image {}
+
+.visual .inner .image.item_1 {
+    position: absolute;
+    width: 260px;
+    top: 88px;
+    right: 210px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.visual .inner .image.item_2 {
+    position: absolute;
+    width: 590px;
+    top: 200px;
+    left: 30px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.visual .inner .image.item_3 {
+    position: absolute;
+    width: 370px;
+    bottom: 50px;
+    right: -120px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.visual .inner:hover .image.item_1 {
+    opacity: 1;
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
+    transition-delay: 0.4s;
+}
+
+.visual .inner:hover .image.item_2 {
+    opacity: 1;
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
+    transition-delay: 0.8s;
+}
+
+.visual .inner:hover .image.item_3 {
+    opacity: 1;
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
+    transition-delay: 1.2s;
+}
+
+.visual .inner:hover .slogan {
+    opacity: 1;
+}
+.visual .inner:hover .slogan .btn {
+    opacity: 1;
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
+    transition-delay: 1.6s;
+    background-color: #333;
+    color: #fff;
+    display: block;
+    align-items: center;
+}
+
+/* notice */
+.notice{
+
+}
+.notice .notice_line{
+    position: relative;
+}
+.notice .notice_line .bg_left{
+    background-color: #111111;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+.notice .notice_line .bg_right{
+    background-color: #f6f5ef;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.notice .notice_line .inner{
+    height: 62px;
+    display: flex;
+}
+.notice .notice_line .inner .inner__left{
+    display: flex;
+    position: relative;
+    width: 60%;
+    height: 100%;
+    background: #111111;
+    align-items: center;
+    color: #fff;
+}
+.notice .notice_line .inner .inner__left h1{
+    font-weight: 700;
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+}
+.notice .notice_line .inner .inner__left .swiper_container{
+    position: absolute;
+    left: 100px;
+    flex-grow: 1;
+    font-size: 14px;
+}
+.notice .notice_line .inner .inner__left a{
+    position: absolute;
+    right: 20px;
+    color: #fff;
+}
+.notice .notice_line .inner .inner__left a span{
+    font-size: 36px;
+    /* span태그는 underline기준이기 때문에 아래 속성 추가해야함 */
+    vertical-align: bottom;
+}
+.notice .notice_line .inner .inner__right{
+    display: flex;
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background-color: #f6f5ef;
+    align-items: center;
+    color: #111111;
+}
+.notice .notice_line .inner .inner__right h1{
+    position: absolute;
+    right: 150px;
+    font-size: 16px;
+    font-weight: 700;
+}
+.notice .notice_line .inner .inner__right a{
+    position: absolute;
+    right: 0;
+    font-size: 16;
+    color: #111111;
+}
+.notice .notice_line .inner .inner__right a span{
+    font-size: 36px;
+    vertical-align: bottom;
+}
+
+/* REWARDS */
+.rewards{
+    background-color: #1e3932;
+}
+.rewards .inner{
+    display: flex;
+    padding: 30px 0 40px 0;
+    /* position:relative는 위에 선언 되어 있음 */
+    gap: 20px; /*flex 속성만 간단하게 간격주고 싶을 때 사용하는 속성*/
+}
+.rewards .inner>a{}
+.rewards .inner>a>img{
+    /* img값은 한쪽만 입력해도 비율대로 입력됨 */
+    width: 176px;   
+    display: block;
+}
+.rewards .inner .rewards__items{
+    flex-grow: 1;
+}
+.rewards .inner .rewards__items .reward__items__register{
+    position: relative;
+    padding-bottom: 12px;
+    box-shadow: 0 0.5px #c8c8c8;
+}
+/* 아래 p태그 2개인데 우선순위 점수가 높아져서 subject에 잘 적용되도록 클래스 선언 */
+.rewards .inner .rewards__items .reward__items__register p{
+    display: block;
+    font-size: 17px;
+    color: #fff;
+}
+.rewards .inner .rewards__items .reward__items__register p.subject{
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+.rewards .inner .rewards__items .reward__items__register .buttons{
+    position: absolute;
+    right: 0;
+    bottom: 12px;
+}
+.rewards .inner .rewards__items .reward__items__card{
+    position: relative;
+    padding-top: 20px;
+}
+.rewards .inner .rewards__items .reward__items__card p{
+    font-size: 14px;
+    color: #fff;   
+}
+.rewards .inner .rewards__items .reward__items__card .buttons{
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+/* PERU */
+.peru{
+    position: relative;
+    background-image: url(../images/peru_bg.jpg);
+    height: 570px;
+    /* 이미지 넣을때 기본적으로 같이 들어가면 좋은 속성 overflow */
+    overflow: hidden;
+}
+.peru::before{
+    /* 가상요소 선택자 사용하려면 peru선택자에 position relative를 줘야함 */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-image: url(../images/peru_bg_left.png);
+    background-size: cover;
+    /* cover는 repeat될 일이 없긴함, contain일 때는 꼭 넣어주면 좋음 */
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+}
+.peru::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-image: url(../images/peru_bg_right.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+}
+.peru .inner{
+    display: flex;
+}
+.peru .inner > .img_product{
+    display: block;
+    position: absolute;
+    width: 350px;
+    top: 70px;
+    left: 200px;
+    /* img의 정확한 위치를 지정해둔 후 이미지 위치를 화면밖으로 임의 지정해준 후 hover해서 원위치로 돌아오게 함 */
+    transform: translate(-500px, 0);
+    transition: 2.5s;
+    opacity: 0;
+}
+.peru:hover .inner .img_product{
+    transform: translate(0px, 0);
+    opacity: 1;
+}
+.peru .inner .peru__contents{
+    position: absolute;
+    height: 160px;
+    top: 200px;
+    right: 60px;
+    transform: translate(500px, 0);
+    transition: 2.5s;
+    opacity: 0;
+}
+.peru:hover .inner .peru__contents{
+    transform: translate(0px, 0);
+    opacity: 1;
+}
+
+.peru .inner .peru__contents>img{
+    width: 427px;
+}
+.peru .inner .peru__contents .btn{
+    display: block;
+    width: 125px;
+    margin-top: 30px;;
+}
+
+/* indonesia */
+.indonesia{
+    background-image: url(../images/indonesia_bg.jpg);
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+.indonesia::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-image: url(../images/indonesia_bg_left.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 450px;
+    height: 300px;
+}
+.indonesia::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-image: url(../images/indonesia_bg_right.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 550px;
+    height: 330px;
+}
+.indonesia .inner{
+
+}
+.indonesia .inner>.indonesia_img{
+    position: absolute;
+    top: 0;
+    right:-500px;
+    width: 2000px;
+}
+.indonesia .inner>.indonesia_title{
+    display: block;
+    width: 496px;
+    position: absolute;
+    top:60px;
+    left: 10px;
+}
+.indonesia .inner>.btn{
+    display: block;
+    width: 125px;
+    position: absolute;
+    top: 220px;
+    left: 210px;
+}
+/* FAVORITE */
+.favorite{
+    position: relative;
+    height: 800px;
+    background-image: url(../images/fav_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+.favorite .inner{
+    height: 800px;
+}
+.favorite .inner>img:nth-child(1){
+    display: block;
+    position: absolute;
+    top: 150px;
+    transform: translate(-500px, 0);
+    transition: 2.5s;
+    opacity: 0;
+}
+.favorite:hover .inner>img:nth-child(1){
+    transform: translate(0px, 0);
+    transition: 2.5s;
+    opacity: 1;
+}
+.favorite .inner img:nth-child(2){
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: -100px;
+    transform: translate(-300px, 0);
+    transition: 2.5s;
+    opacity: 0;
+}
+.favorite:hover .inner>img:nth-child(2){
+    transform: translate(0px, 0);
+    transition: 1.5s;
+    opacity: 1;
+}
+.favorite .inner>img:nth-child(3){
+    width: 672px;
+    position: absolute;
+    top: 150px;
+    right: -10px;
+}
+.favorite .inner>.btn{
+    display: block;
+    width: 125px;
+    position: absolute;
+    left: 120px;
+    top: 580px;
+}
+
+/* MAGAZINE */
+.magazine{
+    height: 400px;
+    background-image: url(../images/magazine_bg.png);
+    background-repeat: no-repeat;
+    background-position: center 45px;
+}
+.magazine .inner{
+
+}
+.magazine .inner .magazine_title{
+    display: block;
+    width: 588px;
+    height: 97px;
+    position: absolute;
+    top: 150px;
+    left: 50px;
+}
+.magazine .inner .magazine_img{
+    display: block;
+    width: 348px;
+    height: 347px;
+    position : absolute;
+    right: 50px;
+    transition: .4s;
+    opacity: 0;
+}
+.magazine:hover .inner .magazine_img{
+    opacity: 1;
+}
+.magazine .inner >.btn{
+    /* display: block; */
+    position: absolute;
+    top: 270px;
+    left: 300px;
+}
+
+/* STORE */
+.store{
+    background-image: url(../images/store_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+}
+.store .inner{
+
+}
+.store .inner>img:nth-child(1).store_img_1{
+    display: block;
+    position: absolute;
+    width: 228px;
+    left: 220px;
+    top: 150px;
+    z-index: 1;
+}
+.store .inner>img:nth-child(2){
+    display: block;
+    position: absolute;
+    width: 366px;
+    top: 0;
+    left: 0;
+}
+.store .inner>img:nth-child(3){
+    display: block;
+    position: absolute;
+    width: 343px;
+    top: -60px;
+    right: 400px;
+}
+.store .inner>img:nth-child(4){
+    display: block;
+    position: absolute;
+    width: 230px;
+    bottom: -400px;
+    right: 0;
+}
+.store .inner>.btn{
+    display: block;
+    position: absolute;
+    top: 260px;
+    right: 420px;
+}
+.store .inner>.store_title_1{
+    position: absolute;
+    width: 385px;
+    height: 54px;
+    top: 100px;
+    right: 150px;
+    opacity: 0;
+    transform: translate(500px,0);
+    transition: 1s;
+}
+.store:hover .inner>.store_title_1{
+    opacity: 1;
+    transform: translate(0,0);
+    transition-delay: .2s;
+}
+.store .inner>.store_title_2{
+    position: absolute;
+    height: 61px;
+    width: 366px;
+    top: 170px;
+    right: 170px;
+    opacity: 0;
+    transform: translate(500px,0);
+    transition: 1s;
+}
+.store:hover .inner>.store_title_2{
+    opacity: 1;
+    transform: translate(0,0);
+    transition-delay: .4s;
+}
+/* FOOTER */
+.footer{
+    background-color: #333;
+    height: 200px;
+    padding: 35px 0 45px 0;
+}
+.footer .inner{
+    display: flex;
+}
+.footer .inner ul{
+    flex-wrap: wrap;
+    width: 220px;
+}
+.footer .inner ul .footer_name{
+    margin-bottom: 10px;
+    padding: 5px 0;
+    font-weight: 700;
+}
+.footer .inner li a{
+    display: block;
+    color: #fff;
+    padding: 3px;
+}
+.footer .inner li a:hover{
+    text-decoration: underline;
+}
+.footer .inner>img{
+    display: block;
+    height: 140px;
+    width: 15px;
+}
+
+/* ASIDE */
+.footer_copyright{
+    height: 200px; 
+    background-color: #333;
+    padding: 20px 0;
+}
+
+.footer_copyright .inner{
+
+}
+.footer_copyright .inner>.agreement{
+    display: flex;
+    justify-content: center;
+    margin: 12px;
+}
+.footer_copyright .inner .agreement li{
+    padding: 0 5px;
+    color: #fff;
+    font-size: 12px;
+}
+.footer_copyright .inner .agreement li:hover{
+    text-decoration: underline;
+}
+.footer_copyright .inner .agreement li:nth-child(1){
+    color: #00704a;
+    font-weight: 700;
+}
+.footer_copyright .inner .agreement li:not(:nth-child(1))::before{
+    content: '|';
+    color: #c8c8c8;
+    margin-right: 7px;
+}
+.footer_copyright .inner>.btns{
+    display: flex;
+    justify-content: center;
+}
+.footer_copyright .inner .btns>li{
+    margin-left: 8px;
+    font-size: 12px;
+}
+/* 왜 btn--white class가 적용되지 않는 것인지 */
+.footer_copyright .inner .btns>.btn--white>a{
+    color: #fff;
+}
+.footer_copyright .inner .btns>.btn--white>a:hover{
+    color: #333;
+}
+.footer_copyright .inner .company_contents{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 12px;
+}
+.footer_copyright .inner .company_contents li{
+    color: #c8c8c8;
+    margin-left: 10px;
+}
+.footer_copyright .inner>p{
+    color: #c8c8c8;
+    text-align: center;
+    font-size: 12px;
+}
