@@ -334,9 +334,7 @@ header .badges .badge>a>img{}
 
 .visual .inner .slogan>.btn {
     display: block;
-    width: 130px;
-    height: 38px;
-    margin-top: 30px;
+    margin-top: 160px;
     opacity: 0;
     transition: 0.4s;
     font-size: 15px;
@@ -729,7 +727,16 @@ header .badges .badge>a>img{}
     position: absolute;
     left: 120px;
     top: 580px;
+    transform: translate(-500px, 0);
+    transition: 2.5s;
+    opacity: 0;
 }
+.favorite:hover .inner>.btn{
+    transform: translate(0, 0);
+    transition: 2.0s;
+    opacity: 1;
+}
+
 
 /* MAGAZINE */
 .magazine{
@@ -759,6 +766,7 @@ header .badges .badge>a>img{}
     opacity: 0;
 }
 .magazine:hover .inner .magazine_img{
+    transition: 1.2s;
     opacity: 1;
 }
 .magazine .inner >.btn{
@@ -813,6 +821,13 @@ header .badges .badge>a>img{}
     position: absolute;
     top: 260px;
     right: 420px;
+    opacity: 0;
+    transform: translate(500px, 0);
+}
+.store:hover .inner>.btn{
+    opacity: 1;
+    transform: translate(0,0);
+    transition: 1s;
 }
 .store .inner>.store_title_1{
     position: absolute;
@@ -901,7 +916,6 @@ header .badges .badge>a>img{}
 }
 .footer_copyright .inner .agreement li:nth-child(1){
     color: #00704a;
-    font-weight: 700;
 }
 .footer_copyright .inner .agreement li:not(:nth-child(1))::before{
     content: '|';
@@ -913,21 +927,15 @@ header .badges .badge>a>img{}
     justify-content: center;
 }
 .footer_copyright .inner .btns>li{
-    margin-left: 8px;
-    font-size: 12px;
 }
-/* 왜 btn--white class가 적용되지 않는 것인지 */
-.footer_copyright .inner .btns>.btn--white>a{
-    color: #fff;
-}
-.footer_copyright .inner .btns>.btn--white>a:hover{
-    color: #333;
+.footer_copyright .inner .btns > a{
+    display: block;
+    margin: 10px 2px 0 3px;
 }
 .footer_copyright .inner .company_contents{
     display: flex;
     justify-content: center;
     margin: 20px;
-    font-size: 12px;
 }
 .footer_copyright .inner .company_contents li{
     color: #c8c8c8;
