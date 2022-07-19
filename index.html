@@ -37,6 +37,12 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- main CSS -->
   <link rel="stylesheet" href="./css/main.css">
+  <!-- ladash cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- gsap cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- main JS -->
+  <script defer src="./self.js"></script>
 </head>
 
 <body>
@@ -388,13 +394,19 @@
   <!-- VISUAL -->
   <section class="visual">
     <div class="inner">
-      <div class="slogan">
+      <div class="slogan fade-in">
         <img src="./images/visual_slogan.png" alt="FIND YOUR TASTE">
         <a href="#" class="btn btn--dark_green">자세히 보기</a>
       </div>
-      <img src="./images/visual_item_1.png" alt="item_1" class="image item_1" />
-      <img src="./images/visual_item_2.png" alt="item_1" class="image item_2" />
-      <img src="./images/visual_item_3.png" alt="item_1" class="image item_3" />
+      <div class="fade-in">
+        <img src="./images/visual_item_1.png" alt="item_1" class="image item_1" />
+      </div>
+      <div class="fade-in">
+        <img src="./images/visual_item_2.png" alt="item_1" class="image item_2" />
+      </div>
+      <div class="fade-in">
+        <img src="./images/visual_item_3.png" alt="item_1" class="image item_3" />
+      </div>
     </div>
   </section>
 
