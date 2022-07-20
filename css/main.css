@@ -365,7 +365,7 @@ header .badges .badge>a>img{}
     top: 88px;
     right: 210px;
     opacity: 0;
-    transition: 0.4s;
+    transition: 1.4s;
 }
 
 .visual .inner .image.item_2 {
@@ -373,8 +373,8 @@ header .badges .badge>a>img{}
     width: 590px;
     top: 200px;
     left: 30px;
-    /* opacity: 0; */
-    transition: 0.4s;
+    opacity: 0;
+    transition: 2s;
 }
 
 .visual .inner .image.item_3 {
@@ -382,29 +382,29 @@ header .badges .badge>a>img{}
     width: 370px;
     bottom: 50px;
     right: -120px;
-    /* opacity: 0; */
-    transition: 0.4s;
+    opacity: 0;
+    transition: 2.7s;
 }
 
 .visual .fade-in{
  opacity: 0;
 }
 
-/* .visual .inner:hover .image.item_1 {
+.visual .inner:hover .image.item_1 {
     opacity: 1;
-    트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
     transition-delay: 0.4s;
 }
 
 .visual .inner:hover .image.item_2 {
     opacity: 1;
-    트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
     transition-delay: 0.8s;
 }
 
 .visual .inner:hover .image.item_3 {
     opacity: 1;
-    트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
     transition-delay: 1.2s;
 }
 
@@ -413,13 +413,13 @@ header .badges .badge>a>img{}
 }
 .visual .inner:hover .slogan .btn {
     opacity: 1;
-    트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리
+    /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
     transition-delay: 1.6s;
     background-color: #333;
     color: #fff;
     display: block;
     align-items: center;
-} */
+}
 
 /* notice */
 .notice{
@@ -464,11 +464,15 @@ header .badges .badge>a>img{}
     position: absolute;
     left: 0;
 }
-.notice .notice_line .inner .inner__left .swiper_container{
+.notice .notice_line .inner .inner__left .swiper{
     position: absolute;
     left: 100px;
     flex-grow: 1;
     font-size: 14px;
+    height: 62px;
+}
+.notice .notice_line .inner .inner__left .swiper .swiper-slide{
+    line-height: 62px;
 }
 .notice .notice_line .inner .inner__left a{
     position: absolute;
@@ -489,6 +493,10 @@ header .badges .badge>a>img{}
     align-items: center;
     color: #111111;
 }
+
+.notice .notice_line .inner .inner__right .toggle-promotion {
+    transition: .4s;
+}
 .notice .notice_line .inner .inner__right h1{
     position: absolute;
     right: 150px;
@@ -504,6 +512,97 @@ header .badges .badge>a>img{}
 .notice .notice_line .inner .inner__right a span{
     font-size: 36px;
     vertical-align: bottom;
+}
+
+/* NOTICE_PROMOTION */
+.notice .promotion{
+    height: 659px;
+    background-color: #f6f5ef;
+    position: relative;
+    overflow: hidden;
+    /* toggle이 열릴 때 속도 */
+    transition: height .4s;
+}
+/* promotion, hide 두가지 다 가지고 있을 경우 */
+.notice .promotion.hide{
+    height: 0;
+}
+
+.notice .promotion .swiper{
+    height: 600px;
+    width: calc(819px * 3 + 20px);    /*calc에 꼭 px은 입력해주기*/
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 40px;
+}
+
+.notice .promotion .swiper .swiper-pagination{
+
+}
+
+/* page넘기는 작은 동그라미 : bullet (ex. ooo) */
+.notice .promotion .swiper .swiper-pagination-bullet{ 
+    width: 12px;
+    height: 12px;
+}
+
+.notice .promotion .swiper .swiper-pagination-bullet-active{
+    background-image: url("../images/promotion_on.png");
+    background-size: cover;
+    background-color: transparent;
+}
+
+.notice .promotion .swiper .swiper-wrapper{
+
+}
+
+.notice .promotion .swiper .swiper-wrapper .swiper-slide{
+    opacity: .5;
+    transition: .3s;
+}
+
+.notice .promotion .swiper .swiper-wrapper .swiper-slide-active{
+    opacity:1;
+}
+
+.notice .promotion .swiper .swiper-wrapper .swiper-slide .btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 45px;
+    margin: auto;
+    width: 150px;
+    text-align: center;
+}
+
+.notice .promotion .swiper .swiper-button-prev,
+.notice .promotion .swiper .swiper-button-next{
+    position: absolute;
+    top: 250px;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #333;
+    color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.notice .promotion .swiper .swiper-button-prev{
+    left: 50%;
+    transform: translate(-550px);
+}
+
+.notice .promotion .swiper .swiper-button-next{
+    right: 50%;
+    transform: translate(550px);
+}
+
+.notice .promotion .swiper .swiper-button-prev::after,
+.notice .promotion .swiper .swiper-button-next::after{
+    font-size: 25px;
+    color: #333;
 }
 
 /* REWARDS */

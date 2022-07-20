@@ -24,6 +24,10 @@
   <meta property="twitter:image" content="./images/starbucks_seo.jpg" />
   <meta property="twitter:url" content="https://incandescent-custard-f663b9.netlify.app/" />
 
+  <!-- swiper(css,js위에 선언되어야 함) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
   <!-- Reset CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 
@@ -42,7 +46,7 @@
   <!-- gsap cdn -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- main JS -->
-  <script defer src="./self.js"></script>
+  <script defer src="./js/main.js"></script>
 </head>
 
 <body>
@@ -398,15 +402,9 @@
         <img src="./images/visual_slogan.png" alt="FIND YOUR TASTE">
         <a href="#" class="btn btn--dark_green">자세히 보기</a>
       </div>
-      <div class="fade-in">
         <img src="./images/visual_item_1.png" alt="item_1" class="image item_1" />
-      </div>
-      <div class="fade-in">
         <img src="./images/visual_item_2.png" alt="item_1" class="image item_2" />
-      </div>
-      <div class="fade-in">
         <img src="./images/visual_item_3.png" alt="item_1" class="image item_3" />
-      </div>
     </div>
   </section>
 
@@ -418,13 +416,45 @@
       <div class="inner">
         <div class="inner__left">
           <h1>공지사항</h1>
-          <div class="swiper_container">My DT Pass 관련 서비스 점검 안내</div>
-          <a href="#"><span class="material-symbols-outlined">add_circle</span></a>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide">My DT Pass 이용 안내</div>
+            <div class="swiper-slide">My DT Pass 관련 서비스 점검 안내</div>
+            <div class="swiper-slide">시스템 개선 및 점검 안내</div>
+            <div class="swiper-slide">전자 영수증 서비스 서비스 점검 안내</div>
+            <div class="swiper-slide">스타벅스 e-Gift Card 구매 가능 금액 안내</div>
+          </div>
+        </div>
+          <a href="javascript:controlAutoplay();" onclick="controlAutoplay();"><span class="material-symbols-outlined">add_circle</span></a>
         </div>
         <div class="inner__right">
           <h1>스타벅스 프로모션</h1>
-          <a href="#"><span class="material-symbols-outlined">expand_circle_down</span></a>
+          <a href="javascript:void(0)" class="toggle-promotion"><span class="material-symbols-outlined">expand_circle_down</span></a>
         </div>
+      </div>
+    </div>
+
+
+    <!-- PROMOTION -->
+    <div class="promotion hide">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./images/promotion_1.jpg" alt="스타벅스와 함께 내가 좋아하는 것을 즐기는 나만의 여름">
+            <a href="#" class="btn btn--black">자세히 보기</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/promotion_2.jpg" alt="스타벅스와 함께 내가 좋아하는 것을 즐기는 나만의 여름">
+            <a href="#" class="btn btn--black">자세히 보기</a>
+          </div>
+          <div class="swiper-slide">
+            <img src="./images/promotion_3.jpg" alt="스타벅스와 함께 내가 좋아하는 것을 즐기는 나만의 여름">
+            <a href="#" class="btn btn--black">자세히 보기</a>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
   </section>
