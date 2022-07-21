@@ -75,13 +75,57 @@ promotionToggleBtn.addEventListener("click", function(){
 });
 
 //<SCROLL ANIMATION>
-// let scrollYpos; //전역변수 선언해주기
-// window.addEventListener("scroll", function(){
-//   scrollYpos = window.scrollY;
-//   console.log(scrollYpos);
-// })  --> peru scroll80정도?
 
-if(scrollYpos > 80) {
-  const peruAnimate = document.
-}
+let scrollYpos; //전역변수 선언해주기
 
+//높이값 확인하는 코드
+window.addEventListener("scroll", function() {
+    scrollYpos = window.scrollY;
+    console.log(scrollY)
+})
+
+//VISUAL scroll
+window.addEventListener("load", function(){
+  const visualAnimation = document.querySelector(".visual .inner");
+  visualAnimation.classList.add("visual_scroll")
+})
+
+//PERU scroll
+window.addEventListener("scroll", function() {
+  if(scrollY > 500) {
+      const peruAnimation = document.querySelector(".peru");
+      peruAnimation.classList.add("peru_scroll");
+  }
+})
+
+//INDONESIA scroll
+window.addEventListener("scroll", function(){
+  if(scrollY > 1000) {
+    const indonesiaAnimation = document.querySelector(".indonesia");
+    indonesiaAnimation.classList.add("indonesia_scroll")
+  }
+})
+
+// FAVORITE scroll
+window.addEventListener("scroll", function(){
+  if(scrollY > 1500) {
+    const favAnimation = document.querySelector(".favorite");
+    favAnimation.classList.add("fav_scroll");
+  }
+})
+
+// Magazine scroll
+window.addEventListener("scroll", function(){
+  if(scrollY > 2000) {
+    const magazineAnimation = document.querySelector(".magazine");
+    magazineAnimation.classList.add("magazine_scroll");
+  }
+})
+
+// Store scroll
+window.addEventListener("scroll", function(){
+  if(scrollY > 2400) {
+    const storeAnimation = document.querySelector(".store");
+    storeAnimation.classList.add("store_scroll");
+  }
+})

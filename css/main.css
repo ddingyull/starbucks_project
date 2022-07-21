@@ -88,8 +88,37 @@ a{
 .btn--black:hover{
     background-color: #333;
     color: #fff;
-    text-decoration: underline;
+    text-decoration: underli
 }
+
+/* FADE IN 실패.. */
+
+/* 화면 표출 전
+.animatable{
+    visibility: hidden;
+    animation-play-state: paused;
+}
+
+화면 표출 후
+.animated{
+    animation-name: fadeInUp;
+    visibility: visible;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+    animation-play-state: running;
+}
+
+@keyframes fadeInUp{
+    0% {
+        opacity: 0;
+        transform: translate(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}  */
+
 /* HEADER */
 header {
     position: fixed;
@@ -386,35 +415,35 @@ header .badges .badge>a>img{}
     transition: 2.7s;
 }
 
-.visual .fade-in{
- opacity: 0;
+.visual{
+
 }
 
-.visual .inner:hover .image.item_1 {
+.visual .inner.visual_scroll .image.item_1 {
     opacity: 1;
     /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
-    transition-delay: 0.4s;
+    transition-delay: 0.5s;
 }
 
-.visual .inner:hover .image.item_2 {
+.visual .inner.visual_scroll .image.item_2 {
     opacity: 1;
     /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
-    transition-delay: 0.8s;
+    transition-delay: 0.9s;
 }
 
-.visual .inner:hover .image.item_3 {
+.visual .inner.visual_scroll .image.item_3 {
     opacity: 1;
     /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
-    transition-delay: 1.2s;
+    transition-delay: 1.3s;
 }
 
-.visual .inner:hover .slogan {
+.visual .inner.visual_scroll .slogan {
     opacity: 1;
 }
-.visual .inner:hover .slogan .btn {
+.visual .inner.visual_scroll .slogan .btn {
     opacity: 1;
     /* 트랜지션 딜레이를 통해 순차적으로 보일 수 있도록 처리 */
-    transition-delay: 1.6s;
+    transition-delay: 1.7s;
     background-color: #333;
     color: #fff;
     display: block;
@@ -661,7 +690,7 @@ header .badges .badge>a>img{}
 /* PERU */
 .peru{
     position: relative;
-    background-image: url(../images/peru_bg.jpg);
+    background-image: url("../images/peru_bg.jpg");
     height: 570px;
     /* 이미지 넣을때 기본적으로 같이 들어가면 좋은 속성 overflow */
     overflow: hidden;
@@ -673,7 +702,7 @@ header .badges .badge>a>img{}
     left: 0;
     bottom: 0;
     display: block;
-    background-image: url(../images/peru_bg_left.png);
+    background-image: url("../images/peru_bg_left.png");
     background-size: cover;
     /* cover는 repeat될 일이 없긴함, contain일 때는 꼭 넣어주면 좋음 */
     background-repeat: no-repeat;
@@ -686,7 +715,7 @@ header .badges .badge>a>img{}
     right: 0;
     bottom: 0;
     display: block;
-    background-image: url(../images/peru_bg_right.png);
+    background-image: url("../images/peru_bg_right.png");
     background-size: cover;
     background-repeat: no-repeat;
     width: 400px;
@@ -706,7 +735,7 @@ header .badges .badge>a>img{}
     transition: 2.5s;
     opacity: 0;
 }
-.peru:hover .inner .img_product{
+.peru.peru_scroll .inner .img_product{
     transform: translate(0px, 0);
     opacity: 1;
 }
@@ -719,9 +748,10 @@ header .badges .badge>a>img{}
     transition: 2.5s;
     opacity: 0;
 }
-.peru:hover .inner .peru__contents{
+.peru.peru_scroll .inner .peru__contents{
     transform: translate(0px, 0);
     opacity: 1;
+    transition: 2.5s;
 }
 
 .peru .inner .peru__contents>img{
@@ -730,12 +760,12 @@ header .badges .badge>a>img{}
 .peru .inner .peru__contents .btn{
     display: block;
     width: 125px;
-    margin-top: 30px;;
+    margin-top: 30px;
 }
 
 /* indonesia */
 .indonesia{
-    background-image: url(../images/indonesia_bg.jpg);
+    background-image: url("../images/indonesia_bg.jpg");
     position: relative;
     height: 400px;
     overflow: hidden;
@@ -746,7 +776,7 @@ header .badges .badge>a>img{}
     left: 0;
     bottom: 0;
     display: block;
-    background-image: url(../images/indonesia_bg_left.png);
+    background-image: url("../images/indonesia_bg_left.png");
     background-size: cover;
     background-repeat: no-repeat;
     width: 450px;
@@ -758,7 +788,7 @@ header .badges .badge>a>img{}
     right: 0;
     bottom: 0;
     display: block;
-    background-image: url(../images/indonesia_bg_right.png);
+    background-image: url("../images/indonesia_bg_right.png");
     background-size: cover;
     background-repeat: no-repeat;
     width: 550px;
@@ -772,6 +802,11 @@ header .badges .badge>a>img{}
     top: 0;
     right:-500px;
     width: 2000px;
+    opacity: 0;
+    transition: .4s;
+}
+.indonesia.indonesia_scroll .inner>.indonesia_img{
+    opacity: 1;
 }
 .indonesia .inner>.indonesia_title{
     display: block;
@@ -791,7 +826,7 @@ header .badges .badge>a>img{}
 .favorite{
     position: relative;
     height: 800px;
-    background-image: url(../images/fav_bg.jpg);
+    background-image: url("../images/fav_bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -809,7 +844,7 @@ header .badges .badge>a>img{}
     transition: 2.5s;
     opacity: 0;
 }
-.favorite:hover .inner>img:nth-child(1){
+.favorite.fav_scroll .inner>img:nth-child(1){
     transform: translate(0px, 0);
     transition: 2.5s;
     opacity: 1;
@@ -823,7 +858,7 @@ header .badges .badge>a>img{}
     transition: 2.5s;
     opacity: 0;
 }
-.favorite:hover .inner>img:nth-child(2){
+.favorite.fav_scroll .inner>img:nth-child(2){
     transform: translate(0px, 0);
     transition: 1.5s;
     opacity: 1;
@@ -844,7 +879,7 @@ header .badges .badge>a>img{}
     transition: 2.5s;
     opacity: 0;
 }
-.favorite:hover .inner>.btn{
+.favorite.fav_scroll .inner>.btn{
     transform: translate(0, 0);
     transition: 2.0s;
     opacity: 1;
@@ -854,7 +889,7 @@ header .badges .badge>a>img{}
 /* MAGAZINE */
 .magazine{
     height: 400px;
-    background-image: url(../images/magazine_bg.png);
+    background-image: url("../images/magazine_bg.png");
     background-repeat: no-repeat;
     background-position: center 45px;
 }
@@ -878,7 +913,7 @@ header .badges .badge>a>img{}
     transition: .4s;
     opacity: 0;
 }
-.magazine:hover .inner .magazine_img{
+.magazine.magazine_scroll .inner .magazine_img{
     transition: 1.2s;
     opacity: 1;
 }
@@ -891,7 +926,7 @@ header .badges .badge>a>img{}
 
 /* STORE */
 .store{
-    background-image: url(../images/store_bg.jpg);
+    background-image: url("../images/store_bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -937,7 +972,7 @@ header .badges .badge>a>img{}
     opacity: 0;
     transform: translate(500px, 0);
 }
-.store:hover .inner>.btn{
+.store.store_scroll .inner>.btn{
     opacity: 1;
     transform: translate(0,0);
     transition: 1s;
@@ -952,7 +987,7 @@ header .badges .badge>a>img{}
     transform: translate(500px,0);
     transition: 1s;
 }
-.store:hover .inner>.store_title_1{
+.store.store_scroll .inner>.store_title_1{
     opacity: 1;
     transform: translate(0,0);
     transition-delay: .2s;
@@ -967,7 +1002,7 @@ header .badges .badge>a>img{}
     transform: translate(500px,0);
     transition: 1s;
 }
-.store:hover .inner>.store_title_2{
+.store.store_scroll .inner>.store_title_2{
     opacity: 1;
     transform: translate(0,0);
     transition-delay: .4s;
