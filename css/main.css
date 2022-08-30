@@ -336,7 +336,7 @@ header .badges {
 header .badges .badge {
     border-radius: 10px;
     margin-top: 12px;
-    box-shadow: 4px 4px 10px rgba(0,0,0, .15);
+    /* box-shadow: 4px 4px 10px rgba(0,0,0, .15); */
 }
 
 header .badges .badge>a{}
@@ -1061,9 +1061,6 @@ header .badges .badge>a>img{}
 }
 .footer_copyright .inner .agreement li:hover{
     text-decoration: underline;
-}
-.footer_copyright .inner .agreement li:nth-child(1){
-    color: #00704a;
 }
 .footer_copyright .inner .agreement li:not(:nth-child(1))::before{
     content: '|';
